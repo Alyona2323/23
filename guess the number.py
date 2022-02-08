@@ -5,12 +5,12 @@ from turtle import bgcolor, bgpic
 
 window = tk.Tk()
 window["bg"] = "#B0C4DE" 
-window.title("Угадай число")
+window.title("Guess the number")
 window.geometry("800x600")
 number = random.randint(1,101)
 tries = 0
 
-label1 = tk.Label(text="Угадай число",
+label1 = tk.Label(text="Guess the number",
                     bg = "#B0C4DE",
                     foreground= "#8B0000",
                     font= ('Courier New', 22,'bold'),
@@ -18,7 +18,7 @@ label1 = tk.Label(text="Угадай число",
                     )
 label1.pack()
 
-label2 = tk.Label(text="Давайте проверим Вашу интуицию. \nЗагаданное число находится в диапазоне от 1 до 100. \nУ Вас есть 10 попыток. \nГотовы?",
+label2 = tk.Label(text="Let's test your intuition. \nThe hidden number is in the range from 1 to 100.\n You have 10 tries. \nReady?",
                     bg = "#B0C4DE",
                     foreground= "#191970",
                     font= ('Courier New', 14),
@@ -26,7 +26,7 @@ label2 = tk.Label(text="Давайте проверим Вашу интуици�
                     )
 label2.pack()
 
-label3 = tk.Label(text="Введите загаданное число:",
+label3 = tk.Label(text="Enter the hidden number: ",
                     bg = "#B0C4DE",
                     foreground= "#DC143C",
                     font= ('Courier New', 15),
@@ -46,24 +46,24 @@ def compare():
     tries += 1
     if tries == 10:
         button.config(state="disabled")
-        tk.messagebox.showinfo("Увы :(", "Вы использовали все попытки")
+        tk.messagebox.showinfo("Alas :(", "You have used all your attempts")
     guess = int(entry.get())
     if guess == " ":
-        tk.messagebox.showerror("ОШИБКА!", "Поле не может быть пустым!")
+        tk.messagebox.showerror("ERROR!", "The field cannot be empty!")
     elif guess > number:
-        tk.messagebox.showinfo("Попробуйте еще", "Число должно быть меньше!")
+        tk.messagebox.showinfo("Try again", "The number must be less!")
     elif guess < number:
-        tk.messagebox.showinfo("Попробуйте еще", "Число должно быть больше!")
+        tk.messagebox.showinfo("Try again", "The number should be more!")
     elif guess == number:
-        tk.messagebox.showinfo("Урааа!", "Это ПРАВИЛЬНЫЙ ОТВЕТ!")
+        tk.messagebox.showinfo("Bravo!", "That's the RIGHT ANSWER!")
         
-        tk.messagebox.showinfo("Поздравляю!", "Вы затратили на отгадывание всего лишь " + str(tries) + " попыток\n")
+        tk.messagebox.showinfo("Congratulations!", "You only spent on guessing" + str(tries) + " attempts\n")
     else:
-        tk.messagebox.showerror("ОШИБКА!", "Ввод неверный!")
+        tk.messagebox.showerror("ERROR!", "Invalid input!")
     entry.delete(0, END)
     
 
-button = tk.Button(text="Проверить",
+button = tk.Button(text="Check",
                     command=compare,
                     background="#2E8B57",
                     foreground="#8B0000",
@@ -76,7 +76,7 @@ button = tk.Button(text="Проверить",
 button.pack(pady="6")
 
 
-button2 = tk.Button(text="Выйти из игры",
+button2 = tk.Button(text="Quit the game",
                     command=window.quit, 
                     width=18,  
                     pady="6", 
